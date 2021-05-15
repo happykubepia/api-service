@@ -99,3 +99,4 @@ image_pull_policy=Always
   $ run-cicd {image registry userid} {image registry password} . dev . java 
     ex) run-cicd happycloudpak passw0rd . dev . java 
 ```
+
