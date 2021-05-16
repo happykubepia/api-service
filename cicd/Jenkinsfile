@@ -21,11 +21,11 @@ def notifyMail(STATUS, RECIPIENTS) {
 notifySlack("STARTED", "#FFFF00")
 notifyMail("STARTED", "${emailRecipients}")
 
-echo "id=>"+env.image_registry_username_m804
-echo "pw=>"+env.image_registry_password_m804
-
-//node(label) {
 node {
+    echo "id=>"+env.image_registry_username_m804
+    echo "pw=>"+env.image_registry_password_m804
+    echo "===> ${image_registry_username_m804}"
+    
     String stageName = ""
     
     stageName = "Get Source"	
