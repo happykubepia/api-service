@@ -29,7 +29,6 @@ node {
         echo "**** START : " + stageName
         
         git url: "https://github.com/happykbfg/api-service.git", branch: "main", credentialsId: "credential_github"	
-        //git url: "https://github.com/happykbfg/api-service.git", branch: "main"
     }
 
     //-- 환경변수 파일 읽어서 변수값 셋팅
