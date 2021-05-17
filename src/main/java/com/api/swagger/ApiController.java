@@ -27,7 +27,7 @@ import io.swagger.annotations.ApiParam;
  */
 
 @RestController
-@RequestMapping("v1")
+@RequestMapping("v1") 
 public class ApiController {
 	private Map<String, User> userList;
 	
