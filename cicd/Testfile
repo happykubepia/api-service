@@ -1,0 +1,12 @@
+
+node {
+    stage("Test") {
+        script {
+            sh "ssh ${sshidBastion} mkdir -p ${bastionHome}/cicd/${imageRepository}"
+            sh "ssh ${sshidBastion} rm -rf ${bastionHome}/run-cicd 2>/dev/null"
+            sh "scp -r ${env.WORKSPACE}/run-cicd ${sshidBastion}:${bastionHome}/"
+            sh "scp -r ${env.WORKSPACE}/cicd ${sshidBastion}:${bastionHome}/cicd/${imageRepository}/"
+        }
+    }
+
+}
