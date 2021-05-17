@@ -52,8 +52,8 @@ node {
     //--- runtime parameters
     devLang = props4jenkins["devlang"]
     bastionHome = env.bastion_home_dir
-    imageRegUsername = env.image_registry_username_m804
-    imageRegPassword = env.image_registry_password_m804
+    imageRegUsername = "happycloudpak"
+    imageRegPassword = "happy@cloud"
     sshidBastion = env.sshid_bastion
     //---
 
