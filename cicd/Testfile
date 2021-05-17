@@ -1,7 +1,7 @@
 
 node {
     stage("Test") {
-        script {
+        sshagent() {
             sh "ssh ${sshidBastion} mkdir -p ${bastionHome}/cicd/${imageRepository}"
             sh "ssh ${sshidBastion} rm -rf ${bastionHome}/run-cicd 2>/dev/null"
             sh "scp -r ${env.WORKSPACE}/run-cicd ${sshidBastion}:${bastionHome}/"
