@@ -94,7 +94,7 @@ node {
             echo "**** START : " + stageName           
             script {                
                 sh "cd ${env.WORKSPACE}/${baseDir}"
-                sh "${env.WORKSPACE}/run-cicd/cmd/build-image ${imageRegUsername} ${imageRegPassword} . ${devLang} ${env.WORKSPACE}/run-cicd"
+                sh "${env.WORKSPACE}/run-cicd/cmd/build-image . ${devLang} ${env.WORKSPACE}/run-cicd"
             }
         }
         
