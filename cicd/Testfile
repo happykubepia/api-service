@@ -3,6 +3,10 @@ node {
 	def bastionHome="/root"
 	def imageRepository="test"
 	
+	stage("Get source") {
+        git url: "https://github.com/happykbfg/config.git", branch: "main", credentialsId: "credential_github_kb05"	
+    }
+    
    	stage("Get scripts") {
        script {
             sh "cd ${env.WORKSPACE}"
