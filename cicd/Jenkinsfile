@@ -48,17 +48,16 @@ node {
     def sonarQubeProject = props4jenkins["sonarQubeProject"]
     
     def profile = props4jenkins["profile"]
-    def bastionIP = props4jenkins["bastionIP"]
 
     //--- runtime parameters
-    devLang = props4jenkins["devlang"]
-    bastionIP = props4jenkins["bastionIP"]
-    bastionUsername = props4jenkins["bastionUsername"]
-    bastionHome = props4jenkins["bastionHome"]
+    def devLang = props4jenkins["devlang"]
+    def bastionIP = props4jenkins["bastionIP"]
+    def bastionUsername = props4jenkins["bastionUsername"]
+    def bastionHome = props4jenkins["bastionHome"]
  
-    ns = props["namespace"]
-    imageRegistryHost = props4jenkins["imageRegistryHost"]
-    imageRegistryCredential = props4jenkins["imageRegistryCredential"]
+    def ns = props["namespace"]
+    def imageRegistryHost = props4jenkins["imageRegistryHost"]
+    def imageRegistryCredential = props4jenkins["imageRegistryCredential"]
     //---
 
     try {
