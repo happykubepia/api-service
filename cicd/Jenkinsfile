@@ -57,6 +57,7 @@ node {
     bastionHome = props4jenkins["bastionHome"]
  
     ns = props["namespace"]
+    imageRegistryHost = props4jenkins["imageRegistryHost"]
     imageRegistryCredential = props4jenkins["imageRegistryCredential"]
     //---
 
@@ -101,7 +102,7 @@ node {
         stageName = "Push image"
 		stage(stageName) {
 			echo "**** START : " + stageName     
-			docker.withRegistry("${imageRegistry}", "${imageRegistryCredential}") {
+			docker.withRegistry("${imageRegistryHost}", "${imageRegistryCredential}") {
 				sh "docker tag ${imageRegistry}/${imageOrganization}/${imageRepository}:${imageTag} ${imageRegistry}/${imageOrganization}/${imageRepository}:latest"
 				sh "docker push ${imageRegistry}/${imageOrganization}/${imageRepository}:${imageTag}"
 				sh "docker push ${imageRegistry}/${imageOrganization}/${imageRepository}:latest"				
