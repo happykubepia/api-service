@@ -17,10 +17,11 @@ node {
     	
     stage("Test") {
         sshagent(credentials:['credential_bastion']) {
-            sh "ssh root@"+bastionIP+" mkdir -p ${bastionHome}/cicd/${imageRepository}"
-            sh "ssh root@"+bastionIP+" rm -rf ${bastionHome}/run-cicd 2>/dev/null"
-            sh "scp -r ${env.WORKSPACE}/run-cicd root@"+bastionIP+":${bastionHome}/"
-            sh "scp -r ${env.WORKSPACE}/cicd root@"+bastionIP+":${bastionHome}/cicd/${imageRepository}/"
+           sh "ssh root@"+bastionIP+" kubectl delete statefulset api-service -n kb05"         
+            //sh "ssh root@"+bastionIP+" mkdir -p ${bastionHome}/cicd/${imageRepository}"           sh "ssh root@"+bastionIP+" mkdir -p ${bastionHome}/cicd/${imageRepository}"
+           // sh "ssh root@"+bastionIP+" rm -rf ${bastionHome}/run-cicd 2>/dev/null"
+           // sh "scp -r ${env.WORKSPACE}/run-cicd root@"+bastionIP+":${bastionHome}/"
+           // sh "scp -r ${env.WORKSPACE}/cicd root@"+bastionIP+":${bastionHome}/cicd/${imageRepository}/"
         }
     }
 }
