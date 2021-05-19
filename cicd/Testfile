@@ -20,13 +20,16 @@ node {
     */
     
     stage("Test") {
+        /*
         withCredentials(
             [
                 file
                     (credentialsId: "keyfile_bastion", 
                         variable: "privatekey_bastion")
             ]
-        ) {                         
+        ) {
+        */     
+        withCredentials([sshUserPrivateKey(credentialsId: "credential_bastion", keyFileVariable: "privatekey_bastion")]) {                            
             sh "ssh -i ${privatekey_bastion} root@"+bastionIP+" mkdir -p ${bastionHome}/cicd/${imageRepository}"           
            // sh "ssh root@"+bastionIP+" mkdir -p ${bastionHome}/cicd/${imageRepository}"
            // sh "ssh root@"+bastionIP+" rm -rf ${bastionHome}/run-cicd 2>/dev/null"
