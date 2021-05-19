@@ -123,7 +123,7 @@ node {
                 sh "scp -i ${privatekey_bastion} -r ${env.WORKSPACE}/run-cicd ${bastionUsername}@${bastionIP}:${bastionHome}/cicd/${ns}/"
                 sh "scp -i ${privatekey_bastion} -r ${env.WORKSPACE}/cicd ${bastionUsername}@${bastionIP}:${bastionHome}/cicd/${ns}/${imageRepository}/"
             }
-        }
+        } 
 
         stageName = "Deploy"
         stage(stageName) {
