@@ -61,7 +61,7 @@ node {
     //---
 
     try {
-        stageName = "Inspection Code"
+        stageName = "Inspect Code"
         stage(stageName) {
             echo "**** START : " + stageName
             if("${skipStages}".contains(stageName)) {
