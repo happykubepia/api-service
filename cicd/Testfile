@@ -24,7 +24,7 @@ node {
                                                              keyFileVariable: 'SSH_KEY_FOR_BASTION')]) {
                          
         //sshagent(credentials:['credential_bastion']) {
-           //sh "ssh root@"+bastionIP+" kubectl delete statefulset api-service -n kb05"         
+            echo "***** Private key => ${SSH_KEY_FOR_BASTION}"    
             sh "ssh -o StrictHostKeyChecking=no root@"+bastionIP+" mkdir -p ${bastionHome}/cicd/${imageRepository}"           
            // sh "ssh root@"+bastionIP+" mkdir -p ${bastionHome}/cicd/${imageRepository}"
            // sh "ssh root@"+bastionIP+" rm -rf ${bastionHome}/run-cicd 2>/dev/null"
