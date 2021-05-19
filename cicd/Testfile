@@ -30,8 +30,8 @@ node {
             ]
         ) {                         
         //sshagent(credentials:['credential_bastion']) {
-            echo "***** Private key => ${privatekey_bastion}"    
-            sh "ssh ${privatekey_bastion} -o StrictHostKeyChecking=no root@"+bastionIP+" mkdir -p ${bastionHome}/cicd/${imageRepository}"           
+            //echo "***** Private key => ${privatekey_bastion}"    
+            sh "ssh -i ${privatekey_bastion} root@"+bastionIP+" mkdir -p ${bastionHome}/cicd/${imageRepository}"           
            // sh "ssh root@"+bastionIP+" mkdir -p ${bastionHome}/cicd/${imageRepository}"
            // sh "ssh root@"+bastionIP+" rm -rf ${bastionHome}/run-cicd 2>/dev/null"
            // sh "scp -r ${env.WORKSPACE}/run-cicd root@"+bastionIP+":${bastionHome}/"
