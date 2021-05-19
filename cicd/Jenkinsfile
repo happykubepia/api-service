@@ -58,6 +58,7 @@ node {
     def ns = props["namespace"]
     def imageRegistryHost = props4jenkins["imageRegistryHost"]
     def imageRegistryCredential = props4jenkins["imageRegistryCredential"]
+    def cicdGitURL = props4jenkins["cicdGitURL"]
     //---
 
     try {
@@ -85,7 +86,7 @@ node {
             script {
                 sh "cd ${env.WORKSPACE}"
                 sh "rm -rf ${env.WORKSPACE}/run-cicd 2>/dev/null"
-                sh "git clone " + env.run_cicd_git_url
+                sh "git clone ${cicdGitURL}"
             }
         }
 
