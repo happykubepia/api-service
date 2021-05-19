@@ -108,7 +108,7 @@ node {
 			}
 		}
 
-        stageName = "Copy CI/CD Scripts to bastion"
+        stageName = "Copy CI/CD Files to bastion"
         stage(stageName) {
             sshagent(credentials:['credential_bastion']) {
                 sh "ssh ${bastionUsername}@${bastionIP} mkdir -p ${bastionHome}/cicd/${ns}/${imageRepository}"
