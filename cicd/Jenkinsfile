@@ -112,18 +112,18 @@ node {
         stage(stageName) {
             sshagent(credentials:['credential_bastion']) {
                 sh "ssh ${bastionUsername}@${bastionIP} mkdir -p ${bastionHome}/cicd/${ns}/${imageRepository}"
-                sh "ssh ${bastionUsername}@${bastionIP} rm -rf ${bastionHome}/run-cicd 2>/dev/null"
-                sh "scp -r ${env.WORKSPACE}/run-cicd ${bastionUsername}@${bastionIP}:${bastionHome}/"
+                sh "ssh ${bastionUsername}@${bastionIP} rm -rf ${bastionHome}/cicd/${ns}/run-cicd 2>/dev/null"
+                sh "scp -r ${env.WORKSPACE}/run-cicd ${bastionUsername}@${bastionIP}:${bastionHome}/cicd/${ns}/"
                 sh "scp -r ${env.WORKSPACE}/cicd ${bastionUsername}@${bastionIP}:${bastionHome}/cicd/${ns}/${imageRepository}/"
             }
         }
 
         stageName = "Deploy"
         stage(stageName) {
-			sshagent(credentials:['credential_bastion']) {
+	    sshagent(credentials:['credential_bastion']) {
                 sh "ssh ${bastionUsername}@${bastionIP} mkdir -p ${bastionHome}/cicd/${ns}/${imageRepository}/deploy"
                 sh "ssh ${bastionUsername}@${bastionIP} rm -f ${bastionHome}/cicd/${ns}/${imageRepository}/deploy/* 2>/dev/null"
-                sh "ssh ${bastionUsername}@${bastionIP} ${bastionHome}/run-cicd/cmd/deploy . ${profile} ${bastionHome}/cicd/${ns}/${imageRepository}"
+                sh "ssh ${bastionUsername}@${bastionIP} ${bastionHome}/cicd/${ns}/run-cicd/cmd/deploy . ${profile} ${bastionHome}/cicd/${ns}/${imageRepository} ${bastionHome}/cicd/${ns}/run-cicd"
             }
         }
         
