@@ -14,11 +14,16 @@ node {
             sh "git clone https://github.com/happykbfg/run-cicd.git"
         }        	
     }
-    	
+    
+    
     stage("Test") {
-        sshagent(credentials:['credential_bastion']) {
+        withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'credential_bastion', \
+                                                             keyFileVariable: 'SSH_KEY_FOR_BASTION')]) {
+                         
+        //sshagent(credentials:['credential_bastion']) {
            //sh "ssh root@"+bastionIP+" kubectl delete statefulset api-service -n kb05"         
-            sh "ssh -o StrictHostKeyChecking=no root@"+bastionIP+" mkdir -p ${bastionHome}/cicd/${imageRepository}"           sh "ssh root@"+bastionIP+" mkdir -p ${bastionHome}/cicd/${imageRepository}"
+            sh "ssh -o StrictHostKeyChecking=no root@"+bastionIP+" mkdir -p ${bastionHome}/cicd/${imageRepository}"           
+           // sh "ssh root@"+bastionIP+" mkdir -p ${bastionHome}/cicd/${imageRepository}"
            // sh "ssh root@"+bastionIP+" rm -rf ${bastionHome}/run-cicd 2>/dev/null"
            // sh "scp -r ${env.WORKSPACE}/run-cicd root@"+bastionIP+":${bastionHome}/"
            // sh "scp -r ${env.WORKSPACE}/cicd root@"+bastionIP+":${bastionHome}/cicd/${imageRepository}/"
