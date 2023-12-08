@@ -1,4 +1,4 @@
-package com.api.swagger;
+package com.api.model;
 
 import lombok.Builder;
 import lombok.Getter;

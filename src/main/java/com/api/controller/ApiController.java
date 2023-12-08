@@ -1,4 +1,4 @@
-package com.api.swagger;
+package com.api.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.api.model.Result;
+import com.api.model.User;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
