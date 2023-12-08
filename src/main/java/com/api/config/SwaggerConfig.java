@@ -23,7 +23,7 @@ public class SwaggerConfig {
 		Docket docket = new Docket(DocumentationType.SWAGGER_2)
 				.apiInfo(apiinfo)
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.api.swagger"))
+				.apis(RequestHandlerSelectors.basePackage("com.api.controller"))
 				.paths(PathSelectors.any())
 				.build();
 		
